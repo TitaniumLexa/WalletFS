@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WalletFS.ViewModels"
+             x:Class="WalletFS.Views.TransactionPage"
+             Title="Транзакция">
+    <ContentPage.BindingContext>
+        <viewModels:TransactionViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"/>
+    </Shell.BackButtonBehavior>
+    <Grid RowDefinitions="*, Auto">
+        <VerticalStackLayout Margin="20">
+            <VerticalStackLayout>
+                <Label Text="Кол-во"/>
+                <Entry Text="{Binding Amount}" Keyboard="Numeric"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Счёт"/>
+                <Picker ItemsSource="{Binding Accounts}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedAccount}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Категория"/>
+                <Picker ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCategory}"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Button Text="Save" Command="{Binding SaveCommand}" Grid.Row="1" Margin="20"/>
+    </Grid>
+</ContentPage>

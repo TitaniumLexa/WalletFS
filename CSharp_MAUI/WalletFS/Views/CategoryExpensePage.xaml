@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WalletFS.ViewModels"
+             x:Class="WalletFS.Views.CategoryExpensePage"
+             Title="Категория расходов">
+    <ContentPage.BindingContext>
+        <viewModels:CategoryExpenseViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"/>
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout Margin="20">
+        <Label Text="Название"/>
+        <Entry Placeholder="Название" Text="{Binding Name}" Keyboard="Text"/>
+        <Button Text="Сохранить" Command="{Binding SaveCommand}" Margin="20"/>
+    </VerticalStackLayout>
+</ContentPage>

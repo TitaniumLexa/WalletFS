@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WalletFS.ViewModels"
+             x:Class="WalletFS.Views.TransactionsExpensePage"
+             Title="TransactionsExpensePage"
+             Appearing="ContentPage_Appearing">
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}"
+                 MinimumHeightRequest="200">
+        <CollectionView ItemsSource="{Binding Transactions}"
+                        x:Name="transactionsCollection"
+                        SelectionMode="Single"
+                        EmptyView="Список пуст">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="2*,2*,2*,*" Padding="10" BackgroundColor="DarkGrey">
+                    <Label Text="Счёт" FontSize="22"/>
+                    <Label Text="Категория" FontSize="22" Grid.Column="1"/>
+                    <Label Text="Сумма" FontSize="22" Grid.Column="3" HorizontalTextAlignment="End"/>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="2*,2*,2*,*" Padding="10">
+                        <Label Text="{Binding AccountName}" FontSize="22"/>
+                        <Label Text="{Binding CategoryName}" FontSize="22" Grid.Column="1"/>
+                        <HorizontalStackLayout Grid.Column="3" HorizontalOptions="End">
+                            <Label Text="{Binding Amount}" FontSize="14"/>
+                            <Label Text="RUB" FontSize="14"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

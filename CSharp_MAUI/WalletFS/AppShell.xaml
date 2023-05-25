@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="WalletFS.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:WalletFS.Views"
+    xmlns:local="clr-namespace:WalletFS">
+
+    <FlyoutItem Title="Главная">
+        <Tab>
+            <ShellContent
+            Title="Главная"
+            ContentTemplate="{DataTemplate views:HomePage}"
+            Route="HomePage" />
+            <ShellContent
+            Title="Счета"
+            ContentTemplate="{DataTemplate views:AccountsPage}"
+            Route="AccountsPage" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Категории">
+        <Tab>
+            <ShellContent
+            Title="Расходы"
+            ContentTemplate="{DataTemplate views:CategoriesExpensePage}"
+            Route="CategoriesExpensePage"/>
+            <ShellContent
+            Title="Доходы"
+            ContentTemplate="{DataTemplate views:CategoriesIncomePage}"
+            Route="CategoriesIncomePage"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Транзакции" >
+        <Tab>
+            <ShellContent
+                Title="Расходы"
+                ContentTemplate="{DataTemplate views:TransactionsExpensePage}"
+                Route="TransactionsExpensePage"/>
+            <ShellContent
+                Title="Доходы"
+                ContentTemplate="{DataTemplate views:TransactionsIncomePage}"
+                Route="TransactionsIncomePage"/>
+            <ShellContent
+                Title="Переводы"
+                ContentTemplate="{DataTemplate views:TransactionsPage}"
+                Route="TransactionsTransferPage"/>
+        </Tab>
+    </FlyoutItem>
+    <ShellContent
+            Title="Выбор темы"
+            ContentTemplate="{DataTemplate views:ThemesPage}"
+            Route="ThemesPage" />
+</Shell>

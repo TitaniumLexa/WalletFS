@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WalletFS.ViewModels"
+             x:Class="WalletFS.Views.AccountPage"
+             Title="Счёт">
+    <ContentPage.BindingContext>
+        <viewModels:AccountViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"/>
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout Margin="20">
+        <Label Text="Название счёта"/>
+        <Entry Placeholder="Name" Text="{Binding Name}" Keyboard="Text"/>
+        <Label Text="Баланс"/>
+        <Entry Placeholder="Value" Text="{Binding Balance}" Keyboard="Numeric"/>
+        <Button Text="Save" Command="{Binding SaveCommand}" Margin="20"/>
+        <CheckBox IsChecked="{Binding IsCreditCard}"/>
+        <Label Text="Кредитный лимит" IsVisible="{Binding IsCreditCard}"/>
+        <Entry Placeholder="Value" Text="{Binding CreditLimit}" Keyboard="Numeric" IsVisible="{Binding IsCreditCard}"/>
+    </VerticalStackLayout>
+</ContentPage>

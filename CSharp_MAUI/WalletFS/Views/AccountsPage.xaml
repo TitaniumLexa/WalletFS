@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WalletFS.ViewModels"
+             x:Class="WalletFS.Views.AccountsPage"
+             Title="AccountsPage"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.BindingContext>
+        <viewModels:AccountsViewModel/>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="*,Auto">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}"
+                     MinimumHeightRequest="200">
+            <CollectionView x:Name="accountsCollection" 
+                            ItemsSource="{Binding Accounts}"
+                            VerticalOptions="Fill"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding SelectCommand}" 
+                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                            EmptyView="Список пуст">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}" FontSize="22"/>
+                            <Label Text="{Binding Balance}" FontSize="22"/>
+                            <Label Text="{Binding CreditLimit}" FontSize="14" TextColor="Silver" IsVisible="{Binding IsCreditCard}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Grid.Row="1" Text="Создать счёт" Command="{Binding NewCommand}" Margin="20"/>
+    </Grid>
+</ContentPage>

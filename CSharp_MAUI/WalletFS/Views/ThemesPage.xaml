@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalletFS.Views.ThemesPage"
+             Title="ThemesPage">
+    <VerticalStackLayout Margin="20">
+        <HorizontalStackLayout>
+            <Label Text="System theme" VerticalOptions="Center"/>
+            <CheckBox x:Name="systemCheckbox" CheckedChanged="systemCheckbox_CheckedChanged"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Light theme" VerticalOptions="Center"/>
+            <CheckBox x:Name="lightCheckbox" CheckedChanged="lightCheckbox_CheckedChanged"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Dark theme" VerticalOptions="Center"/>
+            <CheckBox x:Name="darkCheckbox" CheckedChanged="darkCheckbox_CheckedChanged"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
